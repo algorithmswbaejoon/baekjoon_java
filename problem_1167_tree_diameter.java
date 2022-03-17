@@ -40,12 +40,12 @@ public class Main {//1167
         this.init();
         int number_of_vertices = this.nextInt();
         Queue<Pair>[] queue = new Queue[number_of_vertices];
-        for(int index_of_input = 0; index_of_input < number_of_vertices; ++index_of_input){
+        for (int index_of_input = 0; index_of_input < number_of_vertices; ++index_of_input) {
             int tail_vertex = this.nextInt();
             queue[tail_vertex - 1] = new LinkedList<>();
-            while(true){
+            while (true) {
                 int head_vertex = this.nextInt();
-                if(head_vertex == -1){
+                if (head_vertex == -1) {
                     break;
                 }
                 int cost = this.nextInt();
@@ -65,14 +65,14 @@ public class Main {//1167
         System.out.println(max_diameter);//마지막으로 구해진 것을 바탕으로 출력
     }
 
-    private void dfs(Queue<Pair>[] queue, int tail_vertex, boolean[] visited, int now_cost){//메모리 문제때문에 queue배열로 사용
+    private void dfs(Queue<Pair>[] queue, int tail_vertex, boolean[] visited, int now_cost) {//메모리 문제때문에 queue배열로 사용
         Iterator<Pair> iterator = queue[tail_vertex].iterator();
-        while(iterator.hasNext()){
+        while (iterator.hasNext()) {
             Pair now_head_vertex = iterator.next();
-            if(!visited[now_head_vertex._head_vertex]){
+            if (!visited[now_head_vertex._head_vertex]) {
                 visited[now_head_vertex._head_vertex] = true;
                 int now_max_cost = now_cost + now_head_vertex._cost;
-                if(now_max_cost > max_diameter){
+                if (now_max_cost > max_diameter) {
                     max_diameter = now_max_cost;
                     fartest_vertex = now_head_vertex._head_vertex;
                 }
@@ -90,7 +90,8 @@ public class Main {//1167
 
 class Pair {
     int _head_vertex, _cost;
-    public Pair(int head_vertex, int cost){
+
+    public Pair(int head_vertex, int cost) {
         this._head_vertex = head_vertex;
         this._cost = cost;
     }

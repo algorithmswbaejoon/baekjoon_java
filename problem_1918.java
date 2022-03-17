@@ -9,7 +9,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
         String str = input.nextLine();
         String[] array = _main.makeThePostFix(str);
-        for(int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             System.out.print(array[i]);
         }
     }

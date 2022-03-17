@@ -47,25 +47,25 @@ public class Main {//1076
                 now = 3;
             } else if (color.equals("yellow")) {
                 now = 4;
-            } else if (color.equals("green")){
+            } else if (color.equals("green")) {
                 now = 5;
-            }else if(color.equals("blue")){
+            } else if (color.equals("blue")) {
                 now = 6;
-            }else if(color.equals("violet")){
+            } else if (color.equals("violet")) {
                 now = 7;
-            }else if(color.equals("grey")){
+            } else if (color.equals("grey")) {
                 now = 8;
-            }else if(color.equals("white")){
+            } else if (color.equals("white")) {
                 now = 9;
             }
-            if(index == 0){
+            if (index == 0) {
                 final_number = now;
                 final_number *= 10;
-            }else if(index == 1){
+            } else if (index == 1) {
                 final_number += now;
-            }else{
+            } else {
                 double ten_mult = Math.pow(10, now);
-                final_number *= (int)ten_mult;
+                final_number *= (int) ten_mult;
             }
         }
         System.out.println(final_number);

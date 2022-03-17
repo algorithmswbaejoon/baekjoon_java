@@ -54,15 +54,15 @@ public class Main {//12018 Yonsei TOTO
         Arrays.sort(leastMil);
         int sumOfMil = 0;
         boolean isThat = true;
-        for(int index = 0; index < numberOfClasses; index++){
+        for (int index = 0; index < numberOfClasses; index++) {
             sumOfMil += leastMil[index];
-            if(sumOfMil > myMil){
+            if (sumOfMil > myMil) {
                 System.out.println(index);
                 isThat = false;
                 break;
             }
         }
-        if(isThat){
+        if (isThat) {
             System.out.println(numberOfClasses);
         }
     }
