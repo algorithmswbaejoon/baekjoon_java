@@ -47,10 +47,6 @@ public class Main { // 14712 넴모넴모(Easy)
         destory();
     }
 
-    private static final int[] pointX = {0, -1, -1};
-    private static final int[] pointY = {-1, -1, 0};
-
-
     int row;
     int col;
     int count = 0;
@@ -60,40 +56,30 @@ public class Main { // 14712 넴모넴모(Easy)
         row = nextInt();
         col = nextInt();
         count = 0;
-        isVisited = new boolean[33][33];
+        isVisited = new boolean[row + 1][col + 1];
 
-        dfs(1, 1);
+        dfs(row * col - 1);
 
         System.out.println(count);
     }
 
-    private void dfs(int nowRow, int nowCol) {
-        if (nowRow >= row && nowCol >= col + 1) {
+    private void dfs(int num) {
+        if (num == -1) {
             count++;
             return;
         }
 
-        for (int nextRow = nowRow; nextRow <= row; nextRow++) {
-            for (int nextCol = (nextRow == nowRow ? nowCol : 1); nextCol <= col; nextCol++) {
-                if (isBoom(isVisited, nextRow, nowCol)) continue;
+        int nextRow = num / col;
+        int nextCol = num % col;
 
-                isVisited[nextRow][nextCol] = true;
-                dfs(nextRow, nextCol + 1);
-                isVisited[nextRow][nextCol] = false;
-            }
-        }
-        count++;
-    }
-
-    private boolean isBoom(boolean[][] isVisited, int row, int col) {
-        int possibleCount = 0;
-        for (int i = 0; i < 3; i++) {
-            int nextRow = row + pointX[i];
-            int nextCol = col + pointY[i];
-            if (nextRow >= 0 && nextCol >= 0 && isVisited[nextRow][nextCol]) possibleCount++;
+        if (!(isVisited[nextRow][nextCol + 1] && isVisited[nextRow + 1][nextCol] && isVisited[nextRow + 1][nextCol + 1])) {
+            isVisited[nextRow][nextCol] = true;
+            dfs(num - 1);
+            isVisited[nextRow][nextCol] = false;
         }
 
-        return possibleCount == 3;
+
+        dfs(num - 1);
     }
 
     public static void main(String[] args) {
