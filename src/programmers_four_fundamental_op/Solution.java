@@ -25,9 +25,9 @@ public class Solution {
             minDp[i][i] = intVar;
         }
 
-        for (int middleOpertationIndex = 1; middleOpertationIndex < opCount; middleOpertationIndex++) {
-            for (int frontStart = 0; frontStart < opCount - middleOpertationIndex; frontStart++) {
-                int postEnd = frontStart + middleOpertationIndex;
+        for (int middleOpertationCount = 1; middleOpertationCount < opCount; middleOpertationCount++) {
+            for (int frontStart = 0; frontStart < opCount - middleOpertationCount; frontStart++) {
+                int postEnd = frontStart + middleOpertationCount;
                 for (int frontEnd = frontStart; frontEnd < postEnd; frontEnd++) {
                     if (arr[frontEnd * 2 + 1].equals("+")) {
                         maxDp[frontStart][postEnd] = Math.max(maxDp[frontStart][postEnd], maxDp[frontStart][frontEnd] + maxDp[frontEnd + 1][postEnd]);
@@ -41,5 +41,9 @@ public class Solution {
         }
 
         return maxDp[0][opCount - 1];
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new Solution().solution(new String[]{"5", "-", "3", "+", "1", "+", "2", "-", "4"}));
     }
 }
